@@ -1,24 +1,59 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Abfallkalender",
+  "name": "Abfallkalender Ebersbach",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "/icons/recycling-truck-16.png",
+      "sizes": "16x16",
+      "type": "image/png"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "/icons/recycling-truck-24.png",
+      "sizes": "24x24",
+      "type": "image/png"
     },
     {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "/icons/recycling-truck-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/recycling-truck-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/recycling-truck-64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/recycling-truck-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/recycling-truck-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "screenshots": [
+    {
+      "src": "/icons/screenshot-mobile.png",
+      "sizes": "540x1240",
+      "type": "image/png",
+      "label": "Kalender Mobile"
+    },
+    {
+      "src": "/icons/screenshot-desktop.png",
+      "sizes": "1400x1300",
+      "type": "image/png",
+      "label": "Kalender Desktop",
+      "form_factor": "wide"
+    }
+  ],
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
