@@ -1,6 +1,6 @@
 // public/serviceWorker.js
 
-const CACHE_NAME = 'trash-pickup-cache-v1';
+const CACHE_NAME = 'trash-pickup-cache-v2';
 
 self.addEventListener('install', event => {
   console.log('Service Worker installing.');

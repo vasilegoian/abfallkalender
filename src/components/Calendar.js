@@ -16,6 +16,7 @@ const Calendar = () => {
   }, []);
 
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
 
   useEffect(() => {
     if ('serviceWorker' in navigator && 'PushManager' in window) {
@@ -29,6 +30,19 @@ const Calendar = () => {
         });
       });
     }
+
+    window.addEventListener('beforeinstallprompt', event => {
+        event.preventDefault();
+        setDeferredPrompt(event);
+      });
+  
+      return () => {
+        window.removeEventListener('beforeinstallprompt', event => {
+          event.preventDefault();
+          setDeferredPrompt(event);
+        });
+      };
+
   }, []);
 
   const handleSubscribe = async () => {
@@ -64,13 +78,34 @@ const Calendar = () => {
     }
   };
 
+  const handleInstall = () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(choiceResult => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        setDeferredPrompt(null);
+      });
+    }
+  };
+
   return (
     <div>
-        {!isSubscribed && (
-            <button onClick={handleSubscribe} className='enable-notifications'>
-            🔔 Enable Notifications
-            </button>
-        )}
+        <div className='buttons'>
+            {!isSubscribed && (
+                <button onClick={handleSubscribe} className='enable-notifications'>
+                🔔 Enable Notifications
+                </button>
+            )}
+            {deferredPrompt && (
+                <button onClick={handleInstall} className='enable-notifications'>
+                📲 Install App
+                </button>
+            )}
+        </div>
         <FullCalendar
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
